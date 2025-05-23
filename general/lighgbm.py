@@ -20,7 +20,25 @@ classlightgbm.LGBMRegressor(*,
                             random_state=None, 
                             n_jobs=None, 
                             importance_type='split', 
-                            **kwargs)
+                            **kwargs
+                          # train on cpu
+                            device = cpu
+                           # train on gpu
+                            device = gpu
+                            gpu_platform_id = 0
+                            gpu_device_id = 0
+                           )
+
+# callbacks
+lightgbm.log_evaluation(period=1, 
+                        show_stdv=True)
+lightgbm.reset_parameter(**kwargs)
+lightgbm.record_evaluation(eval_result)
+lightgbm.early_stopping(stopping_rounds, 
+                        first_metric_only=False, 
+                        verbose=True, 
+                        min_delta=0.0)
+
 # training
 
 fit(X, y, sample_weight=None, 
